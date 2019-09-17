@@ -2,7 +2,7 @@
 ### 简介
 java基础先关demo,包括线程,lambda,Stream等
 
-### 以下为apache-common常用包简介
+### 以下为项目包分层简介
 
 组件|功能介绍
 --|:--:
