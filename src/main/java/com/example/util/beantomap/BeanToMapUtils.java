@@ -1,5 +1,6 @@
 package com.example.util.beantomap;
 
+import com.example.util.bean.Person;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
