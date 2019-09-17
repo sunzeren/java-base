@@ -1,6 +1,6 @@
 # java-base
 ### 简介
-java基础相关demo,基于jdk1.8,包括线程,常用数据类型,lambda,Stream等
+java基础相关demo,基于jdk1.8,包括常用数据类型操作,常用设计模式,线程,,lambda,Stream等
 
 ### 以下为项目包分层简介
 
