@@ -1,10 +1,4 @@
 package com.example.stream.collectors;
-
-/**
- * Author by Sun, Date on 2019/4/2.
- * PS: Not easy to write code, please indicate.
- */
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -112,7 +106,7 @@ public class Book {
     }
 
     public static List<Book> getBooks(String ... books) {
-        List<Book> _books = new ArrayList<Book>();
+        List<Book> _books = new ArrayList<>();
         for (String book : books) {
             Book item = new Book(book);
             _books.add(item);

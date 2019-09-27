@@ -5,6 +5,8 @@ package com.example.stream.collectors;
  * PS: Not easy to write code, please indicate.
  */
 
+import org.assertj.core.util.Lists;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +26,14 @@ public class Collectors_Group {
 
     public static void main(String[] args) {
         List<Book> books = Book.getBooks("Notre-Dame de Paris", "朝花夕拾", "朝花夕拾", "挪威的森林");
+        books.add(null);
+        for (int i = 0; i < 10; i++) {
+            ArrayList<Book> emptyList = Lists.newArrayList();
+            emptyList.add(null);
+            Book name = emptyList.stream().findAny().orElse(new Book("无名的书"));
+            System.out.println(name);
+        }
+
         books.stream().map(Book::getName).forEach(System.out::println);
 
         // 分组
