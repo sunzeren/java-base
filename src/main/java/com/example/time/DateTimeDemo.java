@@ -1,25 +1,40 @@
 package com.example.time;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Author by Sun, Date on 2019/5/16.
  * PS: Not easy to write code, please indicate.
  */
 public class DateTimeDemo {
-    // public static void main(String[] args) {
-    //     Date date_1 = new Date();
-    //     Date date_2 = new Date();
-    //     LocalDateTime localDateTime_now = LocalDateTime.now();
-    //     LocalDateTime localDateTime_2 = LocalDateTime.of(2019,5,16,15,30);
-    //     int i = date_1.toInstant().compareTo(date_2.toInstant());
-    //     System.out.println(i);
-    // }
 
-    public static void main(String[] args) {
-        int a = (byte) 400;
-        System.out.println(a);
+    private LocalDateTime now = LocalDateTime.now();
+
+    public void test() {
+        LocalDateTime myTime = LocalDateTime.of(2019, 5, 16, 15, 30);
+        System.out.println("now = " + now);
+        System.out.println("myTime = " + myTime);
+    }
+
+    /**
+     * 常用操作方法
+     */
+    public void often() {
+        //增加
+        now.plusMonths(1);
+        now.plusDays(1);
+        now.plusHours(1);
+        //减少
+        now.minusDays(1);
+        now.minusWeeks(1);
+        now.minusHours(1);
+        //判断
+        now.isAfter(LocalDateTime.now());
+        now.isBefore(LocalDateTime.now());
+        //获取时间段
+        now.getHour();
+        now.getSecond();
+        now.getMinute();
     }
 
 }

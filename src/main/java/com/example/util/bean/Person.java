@@ -1,4 +1,4 @@
-package com.example.util.beantomap;
+package com.example.util.bean;
 
 import java.util.Date;
 

@@ -1,9 +1,5 @@
 package com.example.thread.concurrent;
 
-import org.assertj.core.util.Lists;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 /**
@@ -12,7 +8,8 @@ import java.util.Vector;
  */
 public class ConcurrentTestForList {
     private static Vector<String> list;
-    static{
+
+    static {
         // list = Lists.newArrayList("init", "init", "init", "init", "init");
         list = new Vector<>();
         list.add("init");
