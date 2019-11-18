@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.Objects;
 
 /**
  * Author by Sun, Date on 2019/3/12.
@@ -23,44 +24,45 @@ public class RequestTemplate {
 
 
     @GetMapping("/getTest")
-    public String test(@RequestParam("testID") String testID, HttpServletRequest request){
-        StringBuffer msg = new StringBuffer();
+    public String test(@RequestParam("testID") String testID, HttpServletRequest request) {
+        StringBuilder msg = new StringBuilder();
         String host = request.getHeader("host");
-        msg.append("host:"+host);
-        msg.append("--testID:"+testID);
+        msg.append("host:").append(host);
+        msg.append("--testID:").append(testID);
         System.out.println(msg);
         System.out.println("-----------");
         Enumeration<String> headerNames = request.getHeaderNames();
-        while (headerNames.hasMoreElements()){
+        while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             String headerValue = request.getHeader(headerName);
-            System.out.println(headerName+":"+headerValue);
+            System.out.println(headerName + ":" + headerValue);
         }
         return msg.toString();
     }
 
     @PostMapping("/postTest")
-    public String test(@RequestBody Person person, HttpServletRequest request){
-        if(null==person.getName()){
+    public String test(@RequestBody Person person, HttpServletRequest request) {
+        if (null == person.getName()) {
             return "请告诉我您的名字~";
         }
         System.out.println(person.toString());
-        return "hello!"+person.getName();
+        return "hello!" + person.getName();
     }
 
     @GetMapping("/requestTest")
-    public String requestTest(){
-        StringBuffer msg = new StringBuffer();
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+    public String requestTest() {
+        StringBuilder msg = new StringBuilder();
+        ServletRequestAttributes requestAttributes = Objects.requireNonNull((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
+        HttpServletRequest request = requestAttributes.getRequest();
+        HttpServletResponse response = requestAttributes.getResponse();
         for (Cookie cookie : request.getCookies()) {
             msg.append("</br>");
             msg.append("<b>cookie:</b>");
-            msg.append("name:"+cookie.getName()+"\t value:"+cookie.getValue());
+            msg.append("name:").append(cookie.getName()).append("\t value:").append(cookie.getValue());
         }
         //为前端添加cookie,前端js可通过document.cookie来获取
-        response.setHeader("Set-Cookie","NAME=szr; Expires=DATE; Path=/index; Domain=localhost; SECURE");
-        response.setHeader("testHeader","Hello world!");
+        response.setHeader("Set-Cookie", "NAME=szr; Expires=DATE; Path=/index; Domain=localhost; SECURE");
+        response.setHeader("testHeader", "Hello world!");
 
         //新增一个cookie
         Cookie cookie = new Cookie("newCookie", "newCookieValue");
@@ -72,21 +74,20 @@ public class RequestTemplate {
         msg.append("<b>session:</b>");
         response.getHeaderNames().forEach(msg::append);
 
-        Enumeration enu=request.getParameterNames();
-        while(enu.hasMoreElements()){
-            String paraName=(String)enu.nextElement();
-            System.out.println(paraName+": "+request.getParameter(paraName));
+        Enumeration enu = request.getParameterNames();
+        while (enu.hasMoreElements()) {
+            String paraName = (String) enu.nextElement();
+            System.out.println(paraName + ": " + request.getParameter(paraName));
         }
         return msg.toString();
     }
 
     @GetMapping("/cookieTest")
-    public String cookieTest(){
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        StringBuffer msg = new StringBuffer();
+    public String cookieTest(HttpServletRequest request) {
+        StringBuilder msg = new StringBuilder();
         for (Cookie cookie : request.getCookies()) {
             msg.append("</br>");
-            msg.append(cookie.getName()+":"+cookie.getValue());
+            msg.append(cookie.getName()).append(":").append(cookie.getValue());
         }
         return msg.toString();
     }
