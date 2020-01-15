@@ -7,6 +7,22 @@ package com.example.base.bean;
 public class Person {
     private String name;
     private String gender;
+    private Gender genderOfEnum;
+
+    public Person() {
+    }
+
+    public Person(Object name) {
+        this.name = name.toString();
+    }
+
+    public Gender getGenderOfEnum() {
+        return genderOfEnum;
+    }
+
+    public void setGenderOfEnum(Gender genderOfEnum) {
+        this.genderOfEnum = genderOfEnum;
+    }
 
     public String getName() {
         return name;
@@ -16,20 +32,11 @@ public class Person {
         this.name = name;
     }
 
-
-    private static void say(){
-        System.out.println("i myName the hello");
-    }
-    public static void eat(){
-        System.out.println("i am eating food");
-    }
-
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
-        System.out.println(gender);
         this.gender = gender;
     }
 
@@ -40,4 +47,21 @@ public class Person {
                 ", gender='" + gender + '\'' +
                 '}';
     }
+
+
+    public enum Gender {
+        WOMAN("女"),
+        MAN("男");
+
+        private String value;
+
+        Gender(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+
 }
