@@ -1,21 +1,16 @@
 package com.example.ioc.bean;
 
-import com.example.DemoApplication;
 import com.example.base.bean.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 /**
  * Author by Sun, Date on 2019/3/11.
  * PS: Not easy to write code, please indicate.
  */
-@SpringBootApplication
+//@SpringBootApplication
 public class App implements CommandLineRunner {
 
 
