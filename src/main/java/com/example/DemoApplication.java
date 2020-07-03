@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.ioc.Dao;
+import com.example.mvc.listener.EnvironmentListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +18,11 @@ public class DemoApplication implements CommandLineRunner {
     Dao a;
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        // SpringApplication.run(DemoApplication.class, args);
+        // 或者使用以上代码
+        SpringApplication application = new SpringApplication(DemoApplication.class);
+        application.addListeners(new EnvironmentListener());
+        application.run(args);
     }
 
 

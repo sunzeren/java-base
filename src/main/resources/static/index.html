@@ -11,4 +11,16 @@
 <a href="http://localhost:8080/cookieTest"></a>
 
 </body>
+
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" charset="utf-8"></script>
+
+<script>
+    $.ajax({
+        type: "get",
+        url: '/getDeployTime.json',
+        success: function (result) {
+            $("body").append('<h3>' + result + '</h3>')
+        }
+    });
+</script>
 </html>

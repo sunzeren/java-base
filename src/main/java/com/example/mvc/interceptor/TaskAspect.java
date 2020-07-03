@@ -1,4 +1,4 @@
-// package com.example.apo.interceptor;
+// package com.example.mvc.interceptor;
 //
 // import org.aspectj.lang.ProceedingJoinPoint;
 // import org.aspectj.lang.annotation.*;
@@ -16,14 +16,14 @@
 //
 //     private static final Logger logger = LoggerFactory.getLogger(TaskAspect.class);
 //
-//     @Pointcut("execution(* com.example.request.RequestTemplate.test(..))")
+//     @Pointcut("execution(* com.example.mvc.request.RequestTemplate.test(..))")
 //     private void addTaskAction(){
 //         System.out.println("is pointcut");
 //     }
 //
 //     private ThreadLocal<String> tLocal = new ThreadLocal<String>();
 //
-//     @Before("execution(* com.example.request.RequestTemplate.test())")
+//     @Before("execution(* com.example.mvc.request.RequestTemplate.test())")
 //     public void getInterview(){
 //         System.out.println("is before");
 //         // tLocal.set();

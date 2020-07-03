@@ -1,4 +1,4 @@
-package com.example.request;
+package com.example.mvc.request;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

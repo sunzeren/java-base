@@ -1,27 +1,16 @@
-package com.example.apo.interceptor;
+package com.example.mvc.interceptor;
 
-import com.example.request.RequestTemplate;
-import org.springframework.core.MethodParameter;
-import org.springframework.http.HttpInputMessage;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.servlet.AsyncHandlerInterceptor;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.lang.reflect.Type;
 
 /**
  * Author by Sun, Date on 2019/4/7.
  * PS: Not easy to write code, please indicate.
  */
-// @ControllerAdvice(basePackages = "com.example.request",assignableTypes = { RequestTemplate.class })
+// @ControllerAdvice(basePackages = "com.example.mvc.request",assignableTypes = { RequestTemplate.class })
 public class MyInterceptor extends HandlerInterceptorAdapter {
     public MyInterceptor() {
         super();

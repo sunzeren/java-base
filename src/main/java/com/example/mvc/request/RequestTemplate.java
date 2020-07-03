@@ -1,4 +1,4 @@
-package com.example.request;
+package com.example.mvc.request;
 
 import com.example.base.bean.Person;
 import okhttp3.OkHttpClient;
