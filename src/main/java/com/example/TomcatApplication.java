@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.mvc.listener.EnvironmentListener;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -23,6 +24,7 @@ public class TomcatApplication extends SpringBootServletInitializer {
      */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        builder.application().addListeners(new EnvironmentListener());
         return builder.sources(DemoApplication.class);
     }
 }
