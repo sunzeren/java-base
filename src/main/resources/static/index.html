@@ -8,8 +8,7 @@
 <h1>
     Hello World ! IS AUTO Deploy !
 </h1>
-<a href="https://blog.csdn.net/HoneyZe">More</a>
-
+<a href="https://blog.csdn.net/HoneyZe">About Me</a>
 </body>
 
 <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" charset="utf-8"></script>
@@ -19,7 +18,7 @@
         type: "get",
         url: '/getDeployTime.json',
         success: function (result) {
-            $("body").append('<h3>' + result + '</h3>')
+            $("h1").after('<h3>' + result + '</h3>')
         }
     });
 </script>
