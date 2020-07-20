@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * 使用 CountDownLatchTest ,实现多个线程,同时运行执行
  * 且主线程等待所有线程执行完毕后,再结束运行
- *
+ * <p>
  * 可用于测试并发
  */
 public class CountDownLatchTest {
@@ -19,13 +19,19 @@ public class CountDownLatchTest {
     private AtomicInteger safeCount = new AtomicInteger(0);
     private int notSafeCount = 0;
 
+    protected int taskCount;
+    private final CountDownLatch taskLatch;
+    private final CountDownLatch mainLatch;
+
+    public CountDownLatchTest(int count) {
+        taskCount = count;
+        taskLatch = new CountDownLatch(count);
+        mainLatch = new CountDownLatch(count);
+    }
+
     @Test
     public void run() {
-        final int count = 1000;
-        final CountDownLatch taskLatch = new CountDownLatch(count);
-        final CountDownLatch mainLatch = new CountDownLatch(count);
-
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < taskCount; i++) {
             new Thread(() -> {
                 try {
                     taskLatch.await();
