@@ -11,6 +11,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * 使用 CountDownLatchTest ,实现多个线程,同时运行执行
  * 且主线程等待所有线程执行完毕后,再结束运行
+ *
+ * 可用于测试并发
  */
 public class CountDownLatchTest {
 
