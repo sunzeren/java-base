@@ -1,7 +1,5 @@
 package com.example.current;
 
-import org.junit.Test;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -22,20 +20,28 @@ public class CountDownLatchTest {
     protected int taskCount;
     private final CountDownLatch taskLatch;
     private final CountDownLatch mainLatch;
+    private Runnable runnable;
 
     public CountDownLatchTest(int count) {
         taskCount = count;
+        runnable = this::exec;
         taskLatch = new CountDownLatch(count);
         mainLatch = new CountDownLatch(count);
     }
 
-    @Test
+    public CountDownLatchTest(int count, Runnable task) {
+        taskCount = count;
+        runnable = task;
+        taskLatch = new CountDownLatch(count);
+        mainLatch = new CountDownLatch(count);
+    }
+
     public void run() {
         for (int i = 0; i < taskCount; i++) {
             new Thread(() -> {
                 try {
                     taskLatch.await();
-                    exec();
+                    runnable.run();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
@@ -62,12 +68,18 @@ public class CountDownLatchTest {
     public void exec() {
         try {
             // 模拟任务执行
-            Thread.sleep(1000 * 2);
-            safeCount.incrementAndGet();
-            notSafeCount++;
+            Thread.sleep(1000);
+            for (int i = 0; i < 1000; i++) {
+                safeCount.incrementAndGet();
+                notSafeCount++;
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+    public static void main(String[] args) {
+        final CountDownLatchTest latchTest = new CountDownLatchTest(1000);
+        latchTest.run();
+    }
 }
