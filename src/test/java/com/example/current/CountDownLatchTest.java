@@ -1,6 +1,9 @@
 package com.example.current;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -63,6 +66,17 @@ public class CountDownLatchTest {
         System.out.println("安全的计数Count:" + safeCount);
         System.out.println("不安全的计数Count:" + notSafeCount);
         System.out.println("执行完毕");
+
+        // 适用于 多个异步任务同时执行, 其可拿到最先执行的结果
+        final ExecutorCompletionService<Integer> completionService = new ExecutorCompletionService<>(Executors.newCachedThreadPool());
+        // 调用此方法,会导致调用的线程阻塞,且返回的是最先执行完任务的结果
+        try {
+            final Integer integer = completionService.take().get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void exec() {
